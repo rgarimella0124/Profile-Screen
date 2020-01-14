@@ -12,44 +12,45 @@ import {
 } from "react-native";
 import ProfileHeader from "./ProfileHeader";
 
-const deviceWidth = Dimensions.get('window').width;
+const deviceWidth = Dimensions.get("window").width;
 
 export default class AppRoot extends React.Component {
   constructor() {
     super();
     this.state = {
-      dataSource: {},
+      dataSource: {}
     };
   }
 
   componentDidMount() {
     var that = this;
     let items = Array.apply(null, Array(3)).map((v, i) => {
-      return { id: i, src: 'https://cdn.mos.cms.futurecdn.net/FUE7XiFApEqWZQ85wYcAfM-970-80.jpg'} ;
+      return {
+        id: i,
+        src:
+          "https://cdn.mos.cms.futurecdn.net/FUE7XiFApEqWZQ85wYcAfM-970-80.jpg"
+      };
     });
     that.setState({
-      dataSource: items,
+      dataSource: items
     });
   }
   render() {
-   
-
     return (
       <ScrollView style={{ flex: 1 }}>
         <ProfileHeader />
         <View style={styles.bottom}>
-        <FlatList
-          data={this.state.dataSource}
-          renderItem={({ item }) => (
-            <View style={styles.item}>
-              <Image style={styles.image} source={{ uri: item.src }} />
-            </View>
-          )}
-          //Setting the number of column
-          numColumns={3}
-          keyExtractor={(item, index) => index}
-        />
-
+          <FlatList
+            data={this.state.dataSource}
+            renderItem={({ item }) => (
+              <View style={styles.item}>
+                <Image style={styles.image} source={{ uri: item.src }} />
+              </View>
+            )}
+            //Setting the number of column
+            numColumns={3}
+            keyExtractor={(item, index) => index}
+          />
         </View>
       </ScrollView>
     );
